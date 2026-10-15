@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Proposta de marketing digital · Vasco Imóveis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F5F4; --surface:#FFFFFF; --ink:#0F2A2C; --muted:#52676A; --line:#D5DEDD;
+  --sea:#1C6B66; --sea-soft:#DDEDEB; --sand:#A9803F; --sand-soft:#F2E7D4; --alert:#B5452F; --alert-soft:#F7E1DB; --warn:#9A6B12; --warn-soft:#F6EBCF;
+  --display:"DM Serif Display", Georgia, "Times New Roman", serif;
+  --body:"Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0B1A1C; --surface:#122628; --ink:#E7EFEE; --muted:#97ABAD; --line:#25403F;
+    --sea:#5FBDB4; --sea-soft:#163834; --sand:#D8B274; --sand-soft:#2E2618; --alert:#F08A73; --alert-soft:#3A1E18; --warn:#E3B95A; --warn-soft:#352A12;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0B1A1C; --surface:#122628; --ink:#E7EFEE; --muted:#97ABAD; --line:#25403F;
+  --sea:#5FBDB4; --sea-soft:#163834; --sand:#D8B274; --sand-soft:#2E2618; --alert:#F08A73; --alert-soft:#3A1E18; --warn:#E3B95A; --warn-soft:#352A12;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{margin:0;line-height:1.1}
+h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,4.4vw,3rem);max-width:20ch}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0}
+.lead{color:var(--muted);max-width:62ch;margin-top:14px}
+section{padding:88px 0;border-top:1px solid var(--line)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sand);outline-offset:3px;border-radius:6px}
+.eyebrow{font-size:.85rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sea)}
+
+/* Hero */
+header{padding:40px 0 80px;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;inset:auto -10% -2px -10%;height:90px;background:
+  radial-gradient(60% 90px at 20% 100%,var(--sea-soft),transparent 70%),
+  radial-gradient(50% 80px at 80% 100%,var(--sand-soft),transparent 70%);pointer-events:none;z-index:0}
+header .wrap{position:relative;z-index:1}
+.brand{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.95rem;color:var(--muted)}
+.brand strong{color:var(--ink);font-weight:600}
+.hero{margin-top:72px}
+.hero h1{font-size:clamp(2.8rem,8vw,6rem);line-height:1;max-width:14ch}
+.hero h1 em{font-style:italic;color:var(--sea)}
+.hero .who{margin-top:24px;font-size:1.15rem;max-width:52ch;color:var(--muted)}
+.stats{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.stat{padding:22px 20px 0 0}
+.stat b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,5vw,3.4rem);line-height:1}
+.stat span{display:block;margin-top:8px;color:var(--muted);font-size:.98rem}
+
+/* Diagnóstico */
+.diag{margin-top:40px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.card > button{all:unset;box-sizing:border-box;display:flex;width:100%;gap:14px;align-items:flex-start;padding:22px 22px;cursor:pointer}
+.card > button:focus-visible{outline:3px solid var(--sand);outline-offset:-3px}
+.card .t{flex:1}
+.card .t p{color:var(--muted);font-size:.96rem;margin-top:4px}
+.tag{flex:none;font-size:.78rem;font-weight:700;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.tag.no{background:var(--alert-soft);color:var(--alert)}
+.tag.mid{background:var(--warn-soft);color:var(--warn)}
+.chev{flex:none;width:20px;height:20px;margin-top:2px;transition:transform .25s;color:var(--muted)}
+.card[data-open="true"] .chev{transform:rotate(180deg)}
+.card .more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.card[data-open="true"] .more{grid-template-rows:1fr}
+.card .more > div{overflow:hidden}
+.card .more dl{margin:0;padding:0 22px 22px;display:grid;gap:12px;border-top:1px solid var(--line);padding-top:16px;margin:0 22px 0;padding-left:0;padding-right:0}
+.card dt{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card dd{margin:2px 0 0}
+.card dd.fix{color:var(--sea);font-weight:500}
+.diag-note{margin-top:16px;color:var(--muted);font-size:.92rem}
+
+/* Oportunidade */
+.opp{margin-top:40px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.opp blockquote{margin:0;font-family:var(--display);font-size:clamp(1.6rem,3.2vw,2.2rem);line-height:1.25;border-left:3px solid var(--sand);padding-left:24px}
+.opp ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.opp li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.opp li b{display:block}
+.opp li span{color:var(--muted);font-size:.96rem}
+
+/* Planos */
+#planos{background:var(--surface)}
+.switch{margin-top:36px;display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px;gap:4px;flex-wrap:wrap}
+.switch button{border:0;background:transparent;border-radius:999px;padding:10px 18px;cursor:pointer;font-weight:600;color:var(--muted)}
+.switch button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.switch .save{font-size:.8rem;font-weight:700;color:var(--sand);margin-left:6px}
+.switch button[aria-pressed="true"] .save{color:var(--sand)}
+.plans{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.plan{position:relative;text-align:left;border:1.5px solid var(--line);background:var(--paper);border-radius:20px;padding:28px;cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:border-color .2s,box-shadow .2s}
+.plan[aria-pressed="true"]{border-color:var(--sea);box-shadow:0 0 0 3px color-mix(in srgb,var(--sea) 22%,transparent);background:var(--surface)}
+.plan .pname{font-family:var(--display);font-size:1.8rem;line-height:1.1}
+.plan .pdesc{color:var(--muted);font-size:.96rem}
+.plan .price{margin-top:18px;font-family:var(--display);font-size:clamp(2.6rem,5vw,3.4rem);line-height:1;font-variant-numeric:tabular-nums}
+.plan .price small{font-family:var(--body);font-size:1rem;color:var(--muted)}
+.plan .sub{color:var(--muted);font-size:.95rem;min-height:1.6em;font-variant-numeric:tabular-nums}
+.plan .pill{position:absolute;top:-12px;right:20px;background:var(--sand);color:#1E1406;font-size:.8rem;font-weight:700;padding:4px 12px;border-radius:999px}
+.plan .radio{position:absolute;top:28px;right:28px;width:22px;height:22px;border-radius:50%;border:2px solid var(--line)}
+.plan[aria-pressed="true"] .radio{border:7px solid var(--sea)}
+
+.compare{margin-top:32px;overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;min-width:520px}
+th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+thead th{font-size:.85rem;color:var(--muted);font-weight:700;letter-spacing:.04em}
+th.c,td.c{text-align:center;width:120px}
+td small{display:block;color:var(--muted);font-size:.88rem}
+.col-on{background:color-mix(in srgb,var(--sea) 8%,transparent)}
+.yes{color:var(--sea);font-weight:700}
+.nope{color:var(--muted)}
+.fine{margin-top:16px;color:var(--muted);font-size:.92rem;max-width:70ch}
+
+/* Timeline */
+.months{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.months li{border-top:3px solid var(--line);padding-top:20px}
+.months li:nth-child(1){border-color:var(--sea)}
+.months li:nth-child(2){border-color:color-mix(in srgb,var(--sea) 70%,var(--sand))}
+.months li:nth-child(3){border-color:var(--sand)}
+.months .m{font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.months h3{font-family:var(--display);font-weight:400;font-size:1.7rem;margin-top:6px}
+.months p{color:var(--muted);margin-top:10px;font-size:.98rem}
+
+/* Steps */
+.steps{list-style:none;counter-reset:s;padding:0;margin:40px 0 0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);font-family:var(--display);font-size:1.9rem;color:var(--sand);line-height:1.1}
+.steps b{display:block}
+.steps span{color:var(--muted)}
+footer{padding:56px 0 64px;color:var(--muted);font-size:.95rem;border-top:1px solid var(--line)}
+footer strong{color:var(--ink)}
+
+@media (max-width:820px){
+  .diag,.opp,.plans{grid-template-columns:1fr}
+  .months{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .stat{padding:18px 0;border-bottom:1px solid var(--line)}
+  section{padding:64px 0}
+  .hero{margin-top:48px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <strong>Jessica Lopes | Gestão Digital</strong>
+      <span>Proposta comercial · Outubro de 2026</span>
+    </div>
+    <div class="hero">
+      <p class="eyebrow">Proposta para Vasco Imóveis</p>
+      <h1 style="margin-top:14px">Meio século de mercado, <em>agora no digital</em></h1>
+      <p class="who">Um plano para que quem procura imóvel no litoral gaúcho encontre a Vasco Imóveis no Google, no Instagram e no WhatsApp, com a mesma confiança que a marca construiu em 50 anos.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>50 anos</b><span>de mercado imobiliário</span></div>
+      <div class="stat"><b>15 anos</b><span>de atuação no litoral</span></div>
+      <div class="stat"><b>Loja física</b><span>na Av. Paraguassu, em Xangri-lá</span></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Diagnóstico</p>
+    <h2 style="margin-top:10px">Onde a Vasco está hoje</h2>
+    <p class="lead">Analisamos os canais atuais. Toque em cada item para ver o que encontramos e o que vamos fazer.</p>
+
+    <div class="diag">
+      <div class="card" data-open="false">
+        <button aria-expanded="false">
+          <div class="t"><h3>Google Meu Negócio</h3><p>Perfil no Google Maps e na busca local</p></div>
+          <span class="tag no">Não existe</span>
+          <svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="more"><div><dl>
+          <div><dt>O que encontramos</dt><dd>Mesmo com loja física, quem pesquisa “imobiliária em Xangri-lá” no Google Maps não encontra a Vasco.</dd></div>
+          <div><dt>O que fazemos</dt><dd class="fix">Criação e verificação do perfil, com fotos, horários, telefones e categorias certas.</dd></div>
+        </dl></div></div>
+      </div>
+
+      <div class="card" data-open="false">
+        <button aria-expanded="false">
+          <div class="t"><h3>Linktree</h3><p>O link da bio do Instagram</p></div>
+          <span class="tag mid">Básico</span>
+          <svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="more"><div><dl>
+          <div><dt>O que encontramos</dt><dd>Apenas três botões. As “Exclusividades” levam a uma pasta no Google Drive, o que não combina com imóveis de alto padrão.</dd></div>
+          <div><dt>O que fazemos</dt><dd class="fix">Linktree novo, com a identidade da marca, botões organizados por interesse e endereço da loja.</dd></div>
+        </dl></div></div>
+      </div>
+
+      <div class="card" data-open="false">
+        <button aria-expanded="false">
+          <div class="t"><h3>Instagram e anúncios</h3><p>Conteúdo e campanhas no Meta</p></div>
+          <span class="tag no">Sem estratégia</span>
+          <svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="more"><div><dl>
+          <div><dt>O que encontramos</dt><dd>A marca nunca trabalhou o marketing de forma ativa. Não há calendário de conteúdo nem campanhas rodando.</dd></div>
+          <div><dt>O que fazemos</dt><dd class="fix">Conta de anúncios configurada, conteúdo todo mês e campanhas para gerar contatos no WhatsApp.</dd></div>
+        </dl></div></div>
+      </div>
+
+      <div class="card" data-open="false">
+        <button aria-expanded="false">
+          <div class="t"><h3>Site</h3><p>vascoimoveis.com.br</p></div>
+          <span class="tag mid">Desatualizado</span>
+          <svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="more"><div><dl>
+          <div><dt>O que encontramos</dt><dd>Boa estrutura de busca e uma carteira forte, mas vários imóveis aparecem com “0.00 m²” e a história da marca não está contada em lugar nenhum.</dd></div>
+          <div><dt>O que recomendamos</dt><dd class="fix">Revisão dos cadastros pelo painel administrativo e uma página “Sobre” com a trajetória. Pode ser orçado à parte.</dd></div>
+        </dl></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">A oportunidade</p>
+    <h2 style="margin-top:10px">A Vasco tem o que a concorrência tenta inventar</h2>
+    <div class="opp">
+      <blockquote>Quem compra uma casa de milhões na praia quer saber quem está do outro lado. A Vasco tem 50 anos de resposta.</blockquote>
+      <ul>
+        <li><b>Experiência em construtora</b><span>Conhece o imóvel por dentro, da obra à escritura. É um argumento que poucos corretores têm.</span></li>
+        <li><b>Carteira de alto padrão</b><span>Casas nos condomínios Playa Vista, Celebration e Pacific, entre R$ 2 e R$ 9,5 milhões.</span></li>
+        <li><b>Presença física</b><span>Loja em Xangri-lá, o que transmite segurança e ajuda muito no Google Maps.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="wrap">
+    <p class="eyebrow">Investimento</p>
+    <h2 style="margin-top:10px">Escolha o plano</h2>
+    <p class="lead">Os dois incluem toda a estruturação e a produção de conteúdo. A diferença é a campanha no Google.</p>
+
+    <div class="switch" role="group" aria-label="Forma de contratação">
+      <button data-term="3" aria-pressed="true">Contrato de 3 meses <span class="save">melhor valor</span></button>
+      <button data-term="1" aria-pressed="false">Mensal</button>
+    </div>
+
+    <div class="plans">
+      <button class="plan" data-plan="meta" aria-pressed="false">
+        <span class="radio" aria-hidden="true"></span>
+        <span class="pname">Presença + Meta</span>
+        <span class="pdesc">Estrutura, conteúdo e anúncios no Instagram e Facebook.</span>
+        <span class="price"><span class="v">R$ 2.500</span> <small>/mês</small></span>
+        <span class="sub"></span>
+      </button>
+      <button class="plan" data-plan="full" aria-pressed="true">
+        <span class="pill">Mais completo</span>
+        <span class="radio" aria-hidden="true"></span>
+        <span class="pname">Presença + Meta + Google</span>
+        <span class="pdesc">Tudo do plano anterior, mais anúncios na busca do Google.</span>
+        <span class="price"><span class="v">R$ 3.000</span> <small>/mês</small></span>
+        <span class="sub"></span>
+      </button>
+    </div>
+
+    <div class="compare">
+      <table>
+        <thead><tr><th>O que está incluso</th><th class="c" data-col="meta">Presença + Meta</th><th class="c" data-col="full">+ Google</th></tr></thead>
+        <tbody>
+          <tr><td>Criação do Linktree<small>Novo, com a identidade da marca</small></td><td class="c yes" data-col="meta">✓</td><td class="c yes" data-col="full">✓</td></tr>
+          <tr><td>Criação do Google Meu Negócio<small>Perfil completo e verificado</small></td><td class="c yes" data-col="meta">✓</td><td class="c yes" data-col="full">✓</td></tr>
+          <tr><td>Meta Ads<small>Criação, configuração e gestão da conta de anúncios</small></td><td class="c yes" data-col="meta">✓</td><td class="c yes" data-col="full">✓</td></tr>
+          <tr><td>8 vídeos por mês<small>Para Reels e anúncios</small></td><td class="c yes" data-col="meta">✓</td><td class="c yes" data-col="full">✓</td></tr>
+          <tr><td>4 posts estáticos ou carrosséis por mês</td><td class="c yes" data-col="meta">✓</td><td class="c yes" data-col="full">✓</td></tr>
+          <tr><td>Google Ads<small>Criação, configuração e gestão da conta de anúncios</small></td><td class="c nope" data-col="meta">—</td><td class="c yes" data-col="full">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fine">Os valores se referem aos serviços da agência. A verba dos anúncios é paga diretamente ao Meta e ao Google e é definida junto com você.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Primeiro ciclo</p>
+    <h2 style="margin-top:10px">Como os 3 meses acontecem</h2>
+    <ol class="months">
+      <li><span class="m">Mês 1</span><h3>Estruturar</h3><p>Google Meu Negócio e Linktree no ar, contas de anúncios configuradas e primeiros conteúdos contando a história da Vasco.</p></li>
+      <li><span class="m">Mês 2</span><h3>Ajustar</h3><p>Campanhas rodando com os imóveis em destaque, leitura dos primeiros contatos e ajuste de públicos e mensagens.</p></li>
+      <li><span class="m">Mês 3</span><h3>Acelerar</h3><p>Mais verba no que trouxe contatos qualificados e um retrato claro de quais imóveis e canais geram mais interesse.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Próximos passos</p>
+    <h2 style="margin-top:10px">Para começar</h2>
+    <ol class="steps">
+      <li><div><b>Escolha do plano</b><span>Você define o plano e a forma de contratação, e formalizamos o contrato.</span></div></li>
+      <li><div><b>Acessos e briefing</b><span>Liberação do Instagram, do Facebook e do painel do site, e uma conversa sobre os imóveis prioritários.</span></div></li>
+      <li><div><b>Estrutura no ar</b><span>Google Meu Negócio, Linktree e contas de anúncios prontos nas primeiras semanas.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <strong>Jessica Lopes | Gestão Digital</strong><br>
+    Proposta preparada para Vasco Imóveis. Válida por 15 dias a partir do envio.
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Diagnóstico accordion
+  document.querySelectorAll('.card').forEach(c=>{
+    const b=c.querySelector('button');
+    b.addEventListener('click',()=>{
+      const open=c.dataset.open!=='true';
+      c.dataset.open=open;b.setAttribute('aria-expanded',open);
+    });
+  });
+
+  // Planos
+  const PRICES={meta:{1:3000,3:2500},full:{1:3500,3:3000}};
+  const fmt=v=>'R$ '+v.toLocaleString('pt-BR');
+  let term=3, plan='full';
+  const termBtns=[...document.querySelectorAll('.switch button')];
+  const planBtns=[...document.querySelectorAll('.plan')];
+  function render(){
+    termBtns.forEach(b=>b.setAttribute('aria-pressed',+b.dataset.term===term));
+    planBtns.forEach(b=>{
+      const p=b.dataset.plan, v=PRICES[p][term];
+      b.setAttribute('aria-pressed',p===plan);
+      b.querySelector('.v').textContent=fmt(v);
+      b.querySelector('.sub').textContent=term===3
+        ?'Total de '+fmt(v*3)+' no ciclo · economia de '+fmt((PRICES[p][1]-v)*3)
+        :'Sem fidelidade. No contrato de 3 meses sai '+fmt(PRICES[p][3])+'/mês';
+    });
+    document.querySelectorAll('[data-col]').forEach(el=>el.classList.toggle('col-on',el.dataset.col===plan));
+  }
+  termBtns.forEach(b=>b.addEventListener('click',()=>{term=+b.dataset.term;render();}));
+  planBtns.forEach(b=>b.addEventListener('click',()=>{plan=b.dataset.plan;render();}));
+  render();
+})();
+</script>
+</body>
+</html>
